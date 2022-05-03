@@ -10,12 +10,12 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
     {
       value: '0',
       duration: 0,
-      direction: '0vh'
+      direction: '0px'
     },
     {
       value: '0',
       duration: 0,
-      direction: '0vh'
+      direction: '0px'
     }
   ])
 
@@ -84,8 +84,9 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
         <h1>Datos: </h1>
         <p>V1: {values[0].value}</p>
         <p>V2: {values[1].value}</p>
-        <p>V3: {values[1].value - values[0].value} </p>
+        <p>V: {values[1].value - values[0].value} </p>
       </div>
+      <button type='submit' style={{ display: 'none' }} />
     </form>
   )
 })

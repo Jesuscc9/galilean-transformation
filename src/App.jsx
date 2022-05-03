@@ -63,6 +63,8 @@ function App () {
   }
 
   const handleStop = () => {
+    LINE.setOptions({ middleLabel: '0' })
+    LINE.position()
     circles.forEach((el, i) => {
       animate(el.x, '0px', {
         type: 'spring',
@@ -81,6 +83,7 @@ function App () {
         <div className='Simulation'>
           <div className='start-button'>
             <button onClick={onStart}>INICIAR</button>
+            <button onClick={handleStop}>REINICIAR</button>
           </div>
           <h1>Simulacion: </h1>
           <div className='circles-container' ref={containerRef}>
@@ -94,6 +97,10 @@ function App () {
               style={{ x: circles[1].x }}
               ref={ball2Ref}
             />
+            <div className='earth-image-container'>
+              <img src='https://cdn-icons-png.flaticon.com/512/139/139706.png' className='earth-image' alt='' />
+              <p>Observador</p>
+            </div>
           </div>
         </div>
         <Controls ref={controlsRef} onSubmit={handleStart} onStop={handleStop} distance={distance} />

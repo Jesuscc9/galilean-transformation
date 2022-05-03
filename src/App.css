@@ -58,6 +58,22 @@ body {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  column-gap: 3rem;
+}
+
+.earth-image-container {
+  text-align: center;
+  position: relative;
+  color: white;
+  top: 30%;  
+}
+
+.earth-image-container p {
+  margin: 0.2rem;
+}
+
+.earth-image {
+  width: calc(var(--ball-diameter) + 30px);
 }
 
 .ball {
