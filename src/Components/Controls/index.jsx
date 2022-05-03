@@ -1,36 +1,91 @@
-import { useState } from 'react'
+import { forwardRef, useImperativeHandle, useState } from 'react'
+import './styles.css'
 
-export const Controls = ({ onSubmit, onStop }) => {
-  const [ball1V, setBall1V] = useState('0')
-  const [ball2V, setBall2V] = useState('0')
+const BALL_WIDTH = 50
+
+export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
+  console.log({ distance })
+
+  const [values, setValues] = useState([
+    {
+      value: '0',
+      duration: 0,
+      direction: '0vh'
+    },
+    {
+      value: '0',
+      duration: 0,
+      direction: '0vh'
+    }
+  ])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit([Number(ball1V), Number(ball2V)])
+    console.log({ distance })
+
+    const updated = values.map((e) => {
+      e.value = Number(e.value)
+
+      return {
+        value: Number(e.value),
+        duration: 10 - Math.abs(e.value) / 10,
+        direction: e.value > 0 ? `${(distance / 2) - BALL_WIDTH}px` : `-${(distance / 2) - BALL_WIDTH}px`
+      }
+    })
+
+    onSubmit([...updated])
   }
+
+  useImperativeHandle(ref, () => {
+    return {
+      handleSubmit
+    }
+  })
 
   return (
     <form className='Controls' onSubmit={handleSubmit}>
-
-      <div className='flex'>
-        <label htmlFor='ball1-input'>Velocidad 1: </label>
-        <input min={-100} step={10} type='range' id='ball1-input' value={ball1V} onChange={(e) => { setBall1V(e.target.value) }} />
-        <label htmlFor=''>{ball1V}</label>
+      <div className='Problem'>
+        <h1>Problema: </h1>
+        <p className='Problem__description'>La nave A se mueve hacia la izquierda con una velocidad de
+          <span>
+            <input
+              min={-100}
+              step={0.1}
+              type='number'
+              value={values[1].value}
+              onChange={(e) => {
+                const updated = values
+                updated[1].value = e.target.value
+                setValues([...updated])
+              }}
+              required
+            />
+          </span>
+          c y en el mismo sentido otra nave, B, tiene una velocidad de
+          <span>
+            <input
+              min={-100}
+              step={0.1}
+              type='number'
+              value={values[0].value}
+              onChange={(e) => {
+                const updated = values
+                updated[0].value = e.target.value
+                setValues([...updated])
+              }}
+              required
+            />
+          </span>c. Si ambas velocidades son con
+          respecto a la Tierra, ¿Cuál será su
+          velocidad de la nave B en relación a la nave A?
+        </p>
       </div>
-
-      <div className='flex'>
-        <label htmlFor='ball2-input'>Velocidad 2: </label>
-        <input min={-100} step={10} type='range' id='ball2-input' value={ball2V} onChange={(e) => { setBall2V(e.target.value) }} />
-        <label htmlFor=''>{ball2V}</label>
+      <div className='Data'>
+        <h1>Datos: </h1>
+        <p>V1: {values[0].value}</p>
+        <p>V2: {values[1].value}</p>
+        <p>V3: {values[1].value - values[0].value} </p>
       </div>
-
-      <button className='start-button' type='submit'>
-        INICIAR
-      </button>
-
-      <button className='start-button' type='button' onClick={onStop}>
-        RESTART
-      </button>
     </form>
   )
-}
+})

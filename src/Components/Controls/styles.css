@@ -1,0 +1,67 @@
+.Controls .buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+button {
+  width: 160px;
+  padding: 10px 0px;
+  border-radius: 0.25rem;
+  background-color: #FD923D;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: white;
+}
+
+button:hover {
+  background-color: #b86b2d;
+  transition: all 0.1s;
+}
+
+.Problem {
+  width: 400px;
+  padding: 0.6rem 2rem;
+  background-color: var(--elements-bg);
+  border-radius: 1.6rem;
+}
+
+.Data {
+  width: 400px;
+  padding: 0.6rem 2rem;
+  background-color: var(--elements-bg);
+  border-radius: 1.6rem;
+  color: white;
+  margin-top: 4rem;
+}
+
+.Data h1 {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 500;
+}
+
+.Problem__description {
+  line-height: 1.8rem;
+  text-align: justify;
+  font-size: 1.2rem;
+  color: #bcbcbc;
+}
+
+.Problem h1 {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 500;
+}
+
+.Problem input {
+  border-radius: 0.4rem;
+  border: 1px solid rgba(128, 128, 128, 0.436);
+  outline: 0;
+  height: 2rem;
+  margin: 0.2rem 1rem;
+  padding: 0.4rem;
+}
