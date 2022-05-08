@@ -14,20 +14,14 @@ function App () {
   const controlsRef = useRef(null)
   const [distance, setDistance] = useState(0)
 
-  const circles = [
-    {
+  const circles = {
+    v1: {
       x: useMotionValue('0px')
     },
-    {
+    v2: {
       x: useMotionValue('0px')
     }
-  ]
-
-  circles.forEach((e) => {
-    e.x.onChange(() => {
-      LINE.position()
-    })
-  })
+  }
 
   useEffect(() => {
     setDistance(containerRef.current?.clientWidth)
@@ -52,13 +46,13 @@ function App () {
     circles.forEach((el, i) => {
       const { duration, direction } = values[i]
 
-      animate(el.x, direction, {
-        type: 'spring',
-        duration: duration === 0 ? 1 : duration,
-        onUpdate: () => {
-          LINE.setOptions({ middleLabel: String(length) })
-        }
-      })
+      // animate(el.x, direction, {
+      //   type: 'spring',
+      //   duration: duration === 0 ? 1 : duration,
+      //   onUpdate: () => {
+      //     LINE.setOptions({ middleLabel: String(length) })
+      //   }
+      // })
     })
   }
 
@@ -87,7 +81,7 @@ function App () {
           </div>
           <h1>Simulacion: </h1>
           <div className='circles-container' ref={containerRef}>
-            <motion.div
+            {/* <motion.div
               className='ball ball-1'
               style={{ x: circles[0].x }}
               ref={ball1Ref}
@@ -96,7 +90,7 @@ function App () {
               className='ball ball-2'
               style={{ x: circles[1].x }}
               ref={ball2Ref}
-            />
+            /> */}
             <div className='earth-image-container'>
               <img src='https://cdn-icons-png.flaticon.com/512/139/139706.png' className='earth-image' alt='' />
               <p>Observador</p>
