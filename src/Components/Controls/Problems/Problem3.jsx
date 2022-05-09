@@ -8,9 +8,11 @@ const uiData = {
   observerUrl: imagesUrl.earthDraw,
   circles: {
     v1: {
+      x: 0,
       url: imagesUrl.rightwardSpaceship
     },
     v2: {
+      x: 0,
       url: imagesUrl.leftwardSpaceship
     }
   }

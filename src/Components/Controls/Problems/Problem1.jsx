@@ -15,9 +15,11 @@ const uiData = {
   observerUrl: imagesUrl.backwardPerson,
   circles: {
     v1: {
+      x: 0,
       url: imagesUrl.rightwardBird
     },
     v2: {
+      x: 0,
       url: imagesUrl.leftwardBird
     }
   }

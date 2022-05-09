@@ -13,9 +13,11 @@ const uiData = {
   observerUrl: imagesUrl.radar,
   circles: {
     v1: {
+      x: 0,
       url: imagesUrl.rightwardMotorcycle
     },
     v2: {
+      x: 0,
       url: imagesUrl.leftwardMotorcycle
     }
   }

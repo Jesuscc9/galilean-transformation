@@ -47,6 +47,9 @@ function App () {
   })
 
   useEffect(() => {
+    setTimeout(() => {
+      LINE.position()
+    }, 10)
     setDistance(containerRef.current?.clientWidth)
   }, [])
 
@@ -64,7 +67,10 @@ function App () {
     LINE.setOptions({ middleLabel: String(values.v) })
 
     Object.keys(circles).forEach((e) => {
-      const direction = values[e] > 0 ? `${(distance / 2) - CIRCLE_WIDTH}px` : `-${(distance / 2) - CIRCLE_WIDTH}px`
+      const direction =
+        values[e] > 0
+          ? `${distance / 2 - CIRCLE_WIDTH}px`
+          : `-${distance / 2 - CIRCLE_WIDTH}px`
       animate(circles[e].x, direction, {
         type: 'spring',
         duration: 10 - Math.abs(values[e]) / 10
@@ -85,8 +91,21 @@ function App () {
     })
   }
 
-  const handleInitialData = (e) => {
-    setUiData(e)
+  const handleInitialData = (data) => {
+    setUiData(data)
+
+    if (data.circles.v1.x !== undefined && data.circles.v2.x !== undefined) {
+      Object.keys(circles).forEach((e) => {
+        const x = (distance / 2 - CIRCLE_WIDTH) * data.circles[e].x
+        animate(circles[e].x, `${x}px`, {
+          type: 'spring',
+          duration: 0,
+          onUpdate: () => {
+            LINE.position()
+          }
+        })
+      })
+    }
   }
 
   const onStart = (e) => {
@@ -118,7 +137,11 @@ function App () {
               )}
             </motion.div>
             <div className='Observer'>
-              <img src={uiData.observerUrl} className='Observer__image' alt='' />
+              <img
+                src={uiData.observerUrl}
+                className='Observer__image'
+                alt=''
+              />
               <p>Observador</p>
             </div>
           </div>
@@ -127,7 +150,13 @@ function App () {
             <button onClick={handleStop}>REINICIAR</button>
           </div>
         </div>
-        <Controls ref={controlsRef} onSubmit={handleStart} onStop={handleStop} distance={distance} handleInitialData={handleInitialData} />
+        <Controls
+          ref={controlsRef}
+          onSubmit={handleStart}
+          onStop={handleStop}
+          distance={distance}
+          handleInitialData={handleInitialData}
+        />
       </div>
     </>
   )
