@@ -10,7 +10,7 @@ const initialState = {
   v: undefined
 }
 
-export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
+export const Controls = forwardRef(({ onSubmit, onStop, distance, handleInitialData }, ref) => {
   const [selectedProblem, setSelectedProblem] = useState(0)
   const [values, setValues] = useState(initialState)
 
@@ -57,7 +57,7 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
           />
           <span> :</span>
         </div>
-        <Problem onChange={handleChange} />
+        <Problem onChange={handleChange} setInitialData={handleInitialData} />
       </div>
       <div className='Data'>
         <h1>Datos: </h1>

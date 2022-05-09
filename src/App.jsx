@@ -3,9 +3,22 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Controls } from './Components'
 import { animate, motion, useMotionValue } from 'framer-motion'
+import { imagesUrl } from './helpers'
 
 let LINE = null
-const BALL_WIDTH = 50
+const CIRCLE_WIDTH = 50
+
+const initialUiData = {
+  observerUrl: imagesUrl.earthDraw,
+  circles: {
+    v1: {
+      url: undefined
+    },
+    v2: {
+      url: undefined
+    }
+  }
+}
 
 function App () {
   const ball1Ref = useRef(null)
@@ -14,6 +27,7 @@ function App () {
   const containerRef = useRef(null)
   const controlsRef = useRef(null)
   const [distance, setDistance] = useState(0)
+  const [uiData, setUiData] = useState(initialUiData)
 
   const circles = {
     v1: {
@@ -46,12 +60,11 @@ function App () {
   }, [])
 
   const handleStart = (values) => {
-    console.log({ values })
     handleStop()
     LINE.setOptions({ middleLabel: String(values.v) })
 
     Object.keys(circles).forEach((e) => {
-      const direction = values[e] > 0 ? `${(distance / 2) - BALL_WIDTH}px` : `-${(distance / 2) - BALL_WIDTH}px`
+      const direction = values[e] > 0 ? `${(distance / 2) - CIRCLE_WIDTH}px` : `-${(distance / 2) - CIRCLE_WIDTH}px`
       animate(circles[e].x, direction, {
         type: 'spring',
         duration: 10 - Math.abs(values[e]) / 10
@@ -72,6 +85,10 @@ function App () {
     })
   }
 
+  const handleInitialData = (e) => {
+    setUiData(e)
+  }
+
   const onStart = (e) => {
     controlsRef.current.handleSubmit(e)
   }
@@ -86,14 +103,22 @@ function App () {
               className='ball ball-1'
               style={{ x: circles.v1.x }}
               ref={ball1Ref}
-            />
+            >
+              {uiData.circles.v1.url !== undefined && (
+                <img src={uiData.circles.v1.url} alt='' />
+              )}
+            </motion.div>
             <motion.div
               className='ball ball-2'
               style={{ x: circles.v2.x }}
               ref={ball2Ref}
-            />
-            <div className='earth-image-container'>
-              <img src='https://cdn-icons-png.flaticon.com/512/139/139706.png' className='earth-image' alt='' />
+            >
+              {uiData.circles.v2.url !== undefined && (
+                <img src={uiData.circles.v2.url} alt='' />
+              )}
+            </motion.div>
+            <div className='Observer'>
+              <img src={uiData.observerUrl} className='Observer__image' alt='' />
               <p>Observador</p>
             </div>
           </div>
@@ -102,7 +127,7 @@ function App () {
             <button onClick={handleStop}>REINICIAR</button>
           </div>
         </div>
-        <Controls ref={controlsRef} onSubmit={handleStart} onStop={handleStop} distance={distance} />
+        <Controls ref={controlsRef} onSubmit={handleStart} onStop={handleStop} distance={distance} handleInitialData={handleInitialData} />
       </div>
     </>
   )

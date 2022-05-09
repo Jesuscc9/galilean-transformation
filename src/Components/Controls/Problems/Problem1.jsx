@@ -1,5 +1,8 @@
 // Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de ___ m/s mientras que el otro pájaro B vuela a una velocidad de ___ m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
 
+import { useEffect } from 'react'
+import { imagesUrl } from '../../../helpers'
+
 // V = velocidad pájaro A
 // V1 = velocidad pájaro B
 // V2 = velocidad B respecto de A
@@ -8,7 +11,23 @@
 
 // * Pruebe cambiar los sentidos de los pájaros
 
-export const Problem1 = ({ onChange }) => {
+const uiData = {
+  observerUrl: imagesUrl.backwardPerson,
+  circles: {
+    v1: {
+      url: imagesUrl.rightwardBird
+    },
+    v2: {
+      url: imagesUrl.leftwardBird
+    }
+  }
+}
+
+export const Problem1 = ({ onChange, setInitialData }) => {
+  useEffect(() => {
+    setInitialData(uiData)
+  }, [])
+
   return (
     <>
       <p className='Problem__description'>Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de

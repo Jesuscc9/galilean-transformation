@@ -6,7 +6,26 @@
 
 // V1=v2+v
 
-export const Problem2 = ({ onChange }) => {
+import { useEffect } from 'react'
+import { imagesUrl } from '../../../helpers'
+
+const uiData = {
+  observerUrl: imagesUrl.radar,
+  circles: {
+    v1: {
+      url: imagesUrl.rightwardMotorcycle
+    },
+    v2: {
+      url: imagesUrl.leftwardMotorcycle
+    }
+  }
+}
+
+export const Problem2 = ({ onChange, setInitialData }) => {
+  useEffect(() => {
+    setInitialData(uiData)
+  }, [])
+
   return (
     <>
       <p className='Problem__description'>Una motocicleta se mueve a una velocidad de

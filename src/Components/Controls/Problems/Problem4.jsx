@@ -8,15 +8,15 @@ const uiData = {
   observerUrl: imagesUrl.earthDraw,
   circles: {
     v1: {
-      url: imagesUrl.rightwardSpaceship
+      url: imagesUrl.leftwardSpaceship
     },
     v2: {
-      url: imagesUrl.leftwardSpaceship
+      url: imagesUrl.rightwardSpaceship
     }
   }
 }
 
-export const Problem3 = ({ onChange, setInitialData }) => {
+export const Problem4 = ({ onChange, setInitialData }) => {
   useEffect(() => {
     setInitialData(uiData)
   }, [])
