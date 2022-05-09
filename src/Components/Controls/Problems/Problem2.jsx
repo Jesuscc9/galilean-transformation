@@ -38,8 +38,8 @@ export const Problem2 = ({ onChange, setInitialData }) => {
             type='number'
             required
             onChange={(e) => {
-              onChange({ field: 'v1', value: Number(e.target.value) })
-              onChange({ field: 'v2', value: undefined })
+              onChange({ field: 'v', value: Number(e.target.value) })
+              onChange({ field: 'v1', value: undefined })
             }}
           />
         </span>
@@ -51,8 +51,8 @@ export const Problem2 = ({ onChange, setInitialData }) => {
             type='number'
             required
             onChange={(e) => {
-              onChange({ field: 'v', value: Number(e.target.value) })
-              onChange({ field: 'v2', value: undefined })
+              onChange({ field: 'v2', value: Number(e.target.value) })
+              onChange({ field: 'v1', value: undefined })
             }}
           />
         </span>c con respecto a la motocicleta. ¿Cual será la velocidad del coche según el radar de velocidad?

@@ -4,15 +4,23 @@ export const formula = ({ v1, v2, v }) => {
     return {
       v1,
       v2,
-      v: v2 - v1
+      v: v1 - v2
     }
   }
+
+ if (v && v2 && v1 === undefined) {
+    return {
+      v,
+      v1: v2 + v,
+      v2
+    }
+ }
 
   if (v1 && v && v2 === undefined) {
     // Case of problem 2
     return {
       v1,
-      v2: v1 + v,
+      v2: v1 - v,
       v
     }
   }
