@@ -18,7 +18,7 @@ const uiData = {
     },
     v2: {
       x: 0,
-      url: imagesUrl.leftwardMotorcycle
+      url: imagesUrl.leftwardCar
     }
   }
 }
