@@ -47,7 +47,7 @@ function App () {
   })
 
   useEffect(() => {
-    setTimeout(() => {
+    setInterval(() => {
       LINE.position()
     }, 10)
     setDistance(containerRef.current?.clientWidth)

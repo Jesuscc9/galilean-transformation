@@ -38,7 +38,7 @@ export const Problem4 = ({ onChange, setInitialData }) => {
             required
           />
         </span>
-        c y en el mismo sentido otra nave, B, tiene una velocidad de
+        c y en sentido contrario otra nave, B, tiene una velocidad de
         <span>
           <input
             min={-100}

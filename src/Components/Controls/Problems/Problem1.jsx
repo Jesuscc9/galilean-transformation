@@ -39,8 +39,8 @@ export const Problem1 = ({ onChange, setInitialData }) => {
             step={0.1}
             type='number'
             onChange={(e) => {
-              onChange({ field: 'v1', value: Number(e.target.value) })
-              onChange({ field: 'v', value: undefined })
+              onChange({ field: 'v', value: Number(e.target.value) })
+              onChange({ field: 'v2', value: undefined })
             }}
             required
           />
@@ -53,8 +53,8 @@ export const Problem1 = ({ onChange, setInitialData }) => {
             type='number'
             required
             onChange={(e) => {
-              onChange({ field: 'v2', value: Number(e.target.value) })
-              onChange({ field: 'v', value: undefined })
+              onChange({ field: 'v1', value: Number(e.target.value) })
+              onChange({ field: 'v2', value: undefined })
             }}
           />
         </span>m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
