@@ -1,34 +1,40 @@
-// Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de ___ m/s mientras que el otro pájaro B vuela a una velocidad de ___ m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
+// Una motocicleta se mueve a una velocidad de __ c con respecto a un radar de velocidad. En sentido contrario se va acercando hacia la motocicleta un coche con una velocidad de __ c con respecto a la motocicleta. ¿Cual será la velocidad del coche según el radar de velocidad?
 
-// V = velocidad pájaro A
-// V1 = velocidad pájaro B
-// V2 = velocidad B respecto de A
+// V2= velocidad del coche con respecto a la motocicleta
+// V=velocidad de la motocicleta con respecto al radar de velocidad
+// V1 (la que buscamos): velocidad del coche con respecto al radar de velocidad
 
-// V2 = V1 - V
-
-// * Pruebe cambiar los sentidos de los pájaros
+// V1=v2+v
 
 export const Problem2 = ({ onChange }) => {
   return (
     <>
-      <p className='Problem__description'>Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de
+      <p className='Problem__description'>Una motocicleta se mueve a una velocidad de
         <span>
           <input
             min={-100}
             step={0.1}
             type='number'
             required
+            onChange={(e) => {
+              onChange({ field: 'v1', value: Number(e.target.value) })
+              onChange({ field: 'v2', value: undefined })
+            }}
           />
         </span>
-        m/s mientras que el otro pájaro B vuela a una velocidad de
+        c con respecto a un radar de velocidad. En sentido contrario se va acercando hacia la motocicleta un coche con una velocidad de
         <span>
           <input
             min={-100}
             step={0.1}
             type='number'
             required
+            onChange={(e) => {
+              onChange({ field: 'v', value: Number(e.target.value) })
+              onChange({ field: 'v2', value: undefined })
+            }}
           />
-        </span>m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
+        </span>c con respecto a la motocicleta. ¿Cual será la velocidad del coche según el radar de velocidad?
       </p>
     </>
   )

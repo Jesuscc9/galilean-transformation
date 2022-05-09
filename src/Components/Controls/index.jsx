@@ -4,45 +4,22 @@ import { formula } from '../../helpers'
 import { Problems, problemsOptions } from './Problems/'
 import './styles.css'
 
-const BALL_WIDTH = 50
+const initialState = {
+  v1: undefined,
+  v2: undefined,
+  v: undefined
+}
 
 export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
   const [selectedProblem, setSelectedProblem] = useState(0)
-
-  // const [values, setValues] = useState([
-  //   {
-  //     value: '0',
-  //     duration: 0,
-  //     direction: '0px'
-  //   },
-  //   {
-  //     value: '0',
-  //     duration: 0,
-  //     direction: '0px'
-  //   }
-  // ])
-
-  const [values, setValues] = useState({
-    v1: 0,
-    v2: 0,
-    v: 0
-  })
+  const [values, setValues] = useState(initialState)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ values })
+
+    if (Object.keys(values).some((key) => values[key] === undefined)) return
+
     onSubmit(values)
-
-    // const updated = values.map((e) => {
-    //   e.value = Number(e.value)
-    //   return {
-    //     value: Number(e.value),
-    //     duration: 10 - Math.abs(e.value) / 10,
-    //     direction: e.value > 0 ? `${(distance / 2) - BALL_WIDTH}px` : `-${(distance / 2) - BALL_WIDTH}px`
-    //   }
-    // })
-
-    // onSubmit([...updated])
   }
 
   useImperativeHandle(ref, () => {
@@ -52,8 +29,15 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
   })
 
   useEffect(() => {
-    setValues(formula(values))
-  }, [values])
+    setValues({ ...initialState })
+  }, [selectedProblem])
+
+  const handleChange = ({ field, value }) => {
+    setValues((prev) => {
+      prev[field] = value
+      return formula(prev)
+    })
+  }
 
   const Problem = Problems[selectedProblem]
 
@@ -62,14 +46,18 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance }, ref) => {
   return (
     <form className='Controls' onSubmit={handleSubmit}>
       <div className='Problem'>
-        <h1>Problema: </h1>
-        <Select
-          options={problemsOptions} onChange={(e) => {
-            setSelectedProblem(e.value)
-          }}
-          defaultValue={{ value: 0, label: 1 }}
-        />
-        <Problem />
+        <div className='Problem__header'>
+          <h1>Problema</h1>
+          <Select
+            options={problemsOptions}
+            onChange={(e) => {
+              setSelectedProblem(e.value)
+            }}
+            defaultValue={{ value: 0, label: 1 }}
+          />
+          <span> :</span>
+        </div>
+        <Problem onChange={handleChange} />
       </div>
       <div className='Data'>
         <h1>Datos: </h1>

@@ -6,29 +6,37 @@
 
 // V2 = V1 - V
 
+// * Pruebe cambiar los sentidos de los pájaros
+
 export const Problem1 = ({ onChange }) => {
   return (
     <>
-      <p className='Problem__description'>La nave A se mueve hacia la izquierda con una velocidad de
+      <p className='Problem__description'>Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de
         <span>
           <input
             min={-100}
             step={0.1}
             type='number'
+            onChange={(e) => {
+              onChange({ field: 'v1', value: Number(e.target.value) })
+              onChange({ field: 'v', value: undefined })
+            }}
             required
           />
         </span>
-        c y en el mismo sentido otra nave, B, tiene una velocidad de
+        m/s mientras que el otro pájaro B vuela a una velocidad de
         <span>
           <input
             min={-100}
             step={0.1}
             type='number'
             required
+            onChange={(e) => {
+              onChange({ field: 'v2', value: Number(e.target.value) })
+              onChange({ field: 'v', value: undefined })
+            }}
           />
-        </span>c. Si ambas velocidades son con
-        respecto a la Tierra, ¿Cuál será su
-        velocidad de la nave B en relación a la nave A?
+        </span>m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
       </p>
     </>
   )

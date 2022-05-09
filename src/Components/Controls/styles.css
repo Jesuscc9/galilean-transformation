@@ -29,6 +29,16 @@ button:hover {
   border-radius: 1.6rem;
 }
 
+.Problem__header {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.Problem__header span {
+  color: white;
+}
+
 .Data {
   width: 400px;
   padding: 0.6rem 2rem;
