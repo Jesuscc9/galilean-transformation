@@ -3,19 +3,22 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Controls } from './Components'
 import { animate, motion, useMotionValue } from 'framer-motion'
-import { imagesUrl } from './helpers'
+import { convertToHtml, imagesUrl } from './helpers'
 
 let LINE = null
 const CIRCLE_WIDTH = 50
 
 const initialUiData = {
   observerUrl: imagesUrl.earthDraw,
+  observerLabel: convertToHtml(''),
   circles: {
     v1: {
-      url: undefined
+      url: undefined,
+      label: convertToHtml('')
     },
     v2: {
-      url: undefined
+      url: undefined,
+      label: convertToHtml('')
     }
   }
 }
@@ -123,6 +126,7 @@ function App () {
               style={{ x: circles.v1.x }}
               ref={ball1Ref}
             >
+              <label className='label' dangerouslySetInnerHTML={uiData.circles.v1.label()} />
               {uiData.circles.v1.url !== undefined && (
                 <img src={uiData.circles.v1.url} alt='' />
               )}
@@ -132,6 +136,7 @@ function App () {
               style={{ x: circles.v2.x }}
               ref={ball2Ref}
             >
+              <label className='label' dangerouslySetInnerHTML={uiData.circles.v2.label()} />
               {uiData.circles.v2.url !== undefined && (
                 <img src={uiData.circles.v2.url} alt='' />
               )}
@@ -142,7 +147,7 @@ function App () {
                 className='Observer__image'
                 alt=''
               />
-              <p>Observador</p>
+              <p dangerouslySetInnerHTML={uiData.observerLabel()} />
             </div>
           </div>
           <div className='start-button'>

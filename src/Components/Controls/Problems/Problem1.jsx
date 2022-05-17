@@ -1,7 +1,7 @@
 // Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de ___ m/s mientras que el otro pájaro B vuela a una velocidad de ___ m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
 
 import { useEffect } from 'react'
-import { imagesUrl } from '../../../helpers'
+import { convertToHtml, imagesUrl } from '../../../helpers'
 
 // V = velocidad pájaro A
 // V1 = velocidad pájaro B
@@ -13,14 +13,17 @@ import { imagesUrl } from '../../../helpers'
 
 const uiData = {
   observerUrl: imagesUrl.backwardPerson,
+  observerLabel: convertToHtml('Marco <span class="coeficient">1</span>'),
   circles: {
     v1: {
       x: 0,
-      url: imagesUrl.rightwardBird
+      url: imagesUrl.rightwardBird,
+      label: convertToHtml('Marco <span class="coeficient">2</span>')
     },
     v2: {
       x: 0,
-      url: imagesUrl.leftwardBird
+      url: imagesUrl.leftwardBird,
+      label: convertToHtml('Evento')
     }
   }
 }

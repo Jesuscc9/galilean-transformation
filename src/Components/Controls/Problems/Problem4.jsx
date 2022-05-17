@@ -2,18 +2,21 @@
 // 0.7c. Si ambas velocidades son con respecto a la Tierra, ¿Cuál será su velocidad de la nave B en relación a la nave A?
 
 import { useEffect } from 'react'
-import { imagesUrl } from '../../../helpers'
+import { imagesUrl, convertToHtml } from '../../../helpers'
 
 const uiData = {
   observerUrl: imagesUrl.earthDraw,
+  observerLabel: convertToHtml('Marco <span class="coeficient">1</span>'),
   circles: {
     v1: {
-      x: 0.25,
-      url: imagesUrl.leftwardSpaceship
+      x: 0,
+      url: imagesUrl.rightwardSpaceship,
+      label: convertToHtml('Evento')
     },
     v2: {
-      x: -0.75,
-      url: imagesUrl.rightwardSpaceship
+      x: 0,
+      url: imagesUrl.leftwardSpaceship,
+      label: convertToHtml('Marco <span class="coeficient">2</span>')
     }
   }
 }

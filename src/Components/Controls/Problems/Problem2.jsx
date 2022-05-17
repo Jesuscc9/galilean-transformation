@@ -7,18 +7,21 @@
 // V1=v2+v
 
 import { useEffect } from 'react'
-import { imagesUrl } from '../../../helpers'
+import { convertToHtml, imagesUrl } from '../../../helpers'
 
 const uiData = {
   observerUrl: imagesUrl.radar,
+  observerLabel: convertToHtml('Marco <span class="coeficient">1</span>'),
   circles: {
     v1: {
       x: 0,
-      url: imagesUrl.rightwardMotorcycle
+      url: imagesUrl.rightwardMotorcycle,
+      label: convertToHtml('Marco <span class="coeficient">1</span>')
     },
     v2: {
       x: 0,
-      url: imagesUrl.leftwardCar
+      url: imagesUrl.leftwardCar,
+      label: convertToHtml('Evento')
     }
   }
 }

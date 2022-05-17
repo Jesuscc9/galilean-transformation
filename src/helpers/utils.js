@@ -44,3 +44,11 @@ export const imagesUrl = {
   radar: 'https://technologysport.com/tienda/1477-home_default/radar-pocket-medicion-de-velocidad.jpg',
   leftwardCar: 'https://i.pinimg.com/originals/d1/76/0b/d1760b47412045d7d397507f8ea197f3.png'
 }
+
+export const convertToHtml = (str) => {
+  return () => {
+    return {
+      __html: str
+    }
+  }
+}

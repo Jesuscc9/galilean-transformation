@@ -88,6 +88,20 @@ body {
   opacity: 0.8;
 }
 
+.ball .label {
+  position: absolute;
+  top: 100%;
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+}
+
+.coeficient {
+  position: relative;
+  top: 5px;
+  font-size: 0.8rem;
+}
+
 .ball img {
   width: var(--ball-diameter);
   height: var(--ball-diameter);
