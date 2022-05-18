@@ -7,7 +7,8 @@ import './styles.css'
 const initialState = {
   v1: undefined,
   v2: undefined,
-  v: undefined
+  v: undefined,
+  problem: 1
 }
 
 export const Controls = forwardRef(({ onSubmit, onStop, distance, handleInitialData }, ref) => {
@@ -33,6 +34,7 @@ export const Controls = forwardRef(({ onSubmit, onStop, distance, handleInitialD
   }, [selectedProblem])
 
   const handleChange = ({ field, value }) => {
+    console.log({ field, value })
     setValues((prev) => {
       prev[field] = value
       return formula(prev)

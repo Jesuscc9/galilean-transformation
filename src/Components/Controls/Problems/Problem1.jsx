@@ -33,6 +33,10 @@ export const Problem1 = ({ onChange, setInitialData }) => {
     setInitialData(uiData)
   }, [])
 
+  useEffect(() => {
+    onChange({ field: 'problem', value: 1 })
+  }, [])
+
   return (
     <>
       <p className='Problem__description'>Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de

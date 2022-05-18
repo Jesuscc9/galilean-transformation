@@ -26,6 +26,10 @@ export const Problem3 = ({ onChange, setInitialData }) => {
     setInitialData(uiData)
   }, [])
 
+  useEffect(() => {
+    onChange({ field: 'problem', value: 3 })
+  }, [])
+
   return (
     <>
       <p className='Problem__description'>La nave A se mueve hacia la izquierda con una velocidad de

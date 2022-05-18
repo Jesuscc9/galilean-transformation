@@ -69,6 +69,25 @@ function App () {
     handleStop()
     LINE.setOptions({ middleLabel: String(values.v) })
 
+    const { problem } = values
+
+    if (problem === 1 || problem === 2) {
+      LINE.setOptions({ middleLabel: String(values.v2) })
+      Object.keys(circles).forEach((e) => {
+        const value = e === 'v1' ? values.v : values.v1
+
+        const direction =
+          value > 0
+            ? `${distance / 2 - CIRCLE_WIDTH}px`
+            : `-${distance / 2 - CIRCLE_WIDTH}px`
+        animate(circles[e].x, direction, {
+          type: 'spring',
+          duration: 10 - Math.abs(value) / 10
+        })
+      })
+      return
+    }
+
     Object.keys(circles).forEach((e) => {
       const direction =
         values[e] > 0
@@ -126,7 +145,10 @@ function App () {
               style={{ x: circles.v1.x }}
               ref={ball1Ref}
             >
-              <label className='label' dangerouslySetInnerHTML={uiData.circles.v1.label()} />
+              <label
+                className='label'
+                dangerouslySetInnerHTML={uiData.circles.v1.label()}
+              />
               {uiData.circles.v1.url !== undefined && (
                 <img src={uiData.circles.v1.url} alt='' />
               )}
@@ -136,7 +158,10 @@ function App () {
               style={{ x: circles.v2.x }}
               ref={ball2Ref}
             >
-              <label className='label' dangerouslySetInnerHTML={uiData.circles.v2.label()} />
+              <label
+                className='label'
+                dangerouslySetInnerHTML={uiData.circles.v2.label()}
+              />
               {uiData.circles.v2.url !== undefined && (
                 <img src={uiData.circles.v2.url} alt='' />
               )}

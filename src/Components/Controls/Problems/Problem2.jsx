@@ -31,6 +31,10 @@ export const Problem2 = ({ onChange, setInitialData }) => {
     setInitialData(uiData)
   }, [])
 
+  useEffect(() => {
+    onChange({ field: 'problem', value: 2 })
+  }, [])
+
   return (
     <>
       <p className='Problem__description'>Una motocicleta se mueve a una velocidad de

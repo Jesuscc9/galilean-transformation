@@ -1,10 +1,11 @@
-export const formula = ({ v1, v2, v }) => {
+export const formula = ({ v1, v2, v, problem }) => {
   if (v1 && v2 && v === undefined) {
     // Case of problem 1
     return {
       v1,
       v2,
-      v: v1 - v2
+      v: v1 - v2,
+      problem
     }
   }
 
@@ -12,7 +13,8 @@ export const formula = ({ v1, v2, v }) => {
     return {
       v,
       v1: v2 + v,
-      v2
+      v2,
+      problem
     }
   }
 
@@ -21,14 +23,16 @@ export const formula = ({ v1, v2, v }) => {
     return {
       v1,
       v2: v1 - v,
-      v
+      v,
+      problem
     }
   }
 
   return {
     v1,
     v2,
-    v
+    v,
+    problem
   }
 }
 
