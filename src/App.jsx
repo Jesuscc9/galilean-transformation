@@ -71,11 +71,27 @@ function App () {
 
     const { problem } = values
 
-    if (problem === 1 || problem === 2) {
+    if (problem === 1) {
       LINE.setOptions({ middleLabel: String(values.v2) })
       Object.keys(circles).forEach((e) => {
         const value = e === 'v1' ? values.v : values.v1
 
+        const direction =
+          value > 0
+            ? `${distance / 2 - CIRCLE_WIDTH}px`
+            : `-${distance / 2 - CIRCLE_WIDTH}px`
+        animate(circles[e].x, direction, {
+          type: 'spring',
+          duration: 10 - Math.abs(value) / 10
+        })
+      })
+      return
+    }
+
+    if (problem === 2) {
+      LINE.setOptions({ middleLabel: String(values.v2) })
+      Object.keys(circles).forEach((e) => {
+        const value = e === 'v1' ? values.v : values.v2
         const direction =
           value > 0
             ? `${distance / 2 - CIRCLE_WIDTH}px`
