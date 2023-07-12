@@ -39,10 +39,13 @@ export const Problem1 = ({ onChange, setInitialData }) => {
 
   return (
     <>
-      <p className='Problem__description'>Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El primer pájaro A va a una velocidad de
+      <p className='Problem__description'>
+        Una persona se pone a observar el cielo y ve dos pájaros en vuelo. El
+        primer pájaro A va a una velocidad de
         <span>
           <input
             min={-100}
+            max={100}
             step={0.1}
             type='number'
             onChange={(e) => {
@@ -56,6 +59,7 @@ export const Problem1 = ({ onChange, setInitialData }) => {
         <span>
           <input
             min={-100}
+            max={100}
             step={0.1}
             type='number'
             required
@@ -64,7 +68,9 @@ export const Problem1 = ({ onChange, setInitialData }) => {
               onChange({ field: 'v2', value: undefined })
             }}
           />
-        </span>m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro A.
+        </span>
+        m/s. Calcule la velocidad relativa del pájaro B con respecto al pájaro
+        A.
       </p>
     </>
   )

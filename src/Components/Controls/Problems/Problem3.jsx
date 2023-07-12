@@ -32,10 +32,12 @@ export const Problem3 = ({ onChange, setInitialData }) => {
 
   return (
     <>
-      <p className='Problem__description'>La nave A se mueve hacia la izquierda con una velocidad de
+      <p className='Problem__description'>
+        La nave A se mueve hacia la izquierda con una velocidad de
         <span>
           <input
-            min={-100}
+            min={0}
+            max={1}
             step={0.1}
             type='number'
             onChange={(e) => {
@@ -48,7 +50,8 @@ export const Problem3 = ({ onChange, setInitialData }) => {
         c y en el mismo sentido otra nave, B, tiene una velocidad de
         <span>
           <input
-            min={-100}
+            min={0}
+            max={1}
             step={0.1}
             type='number'
             onChange={(e) => {
@@ -57,7 +60,9 @@ export const Problem3 = ({ onChange, setInitialData }) => {
             }}
             required
           />
-        </span>c. Si ambas velocidades son con respecto a la Tierra, ¿Cuál será su velocidad de la nave B en relación a la nave A?
+        </span>
+        c. Si ambas velocidades son con respecto a la Tierra, ¿Cuál será su
+        velocidad de la nave B en relación a la nave A?
       </p>
     </>
   )

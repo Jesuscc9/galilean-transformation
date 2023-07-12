@@ -37,10 +37,12 @@ export const Problem2 = ({ onChange, setInitialData }) => {
 
   return (
     <>
-      <p className='Problem__description'>Una motocicleta se mueve a una velocidad de
+      <p className='Problem__description'>
+        Una motocicleta se mueve a una velocidad de
         <span>
           <input
-            min={-100}
+            min={0}
+            max={1}
             step={0.1}
             type='number'
             required
@@ -50,10 +52,12 @@ export const Problem2 = ({ onChange, setInitialData }) => {
             }}
           />
         </span>
-        c con respecto a un radar de velocidad. En sentido contrario se va acercando hacia la motocicleta un coche con una velocidad de
+        c con respecto a un radar de velocidad. En sentido contrario se va
+        acercando hacia la motocicleta un coche con una velocidad de
         <span>
           <input
-            min={-100}
+            min={0}
+            max={1}
             step={0.1}
             type='number'
             required
@@ -62,7 +66,9 @@ export const Problem2 = ({ onChange, setInitialData }) => {
               onChange({ field: 'v1', value: undefined })
             }}
           />
-        </span>c con respecto a la motocicleta. ¿Cual será la velocidad del coche según el radar de velocidad?
+        </span>
+        c con respecto a la motocicleta. ¿Cual será la velocidad del coche según
+        el radar de velocidad?
       </p>
     </>
   )

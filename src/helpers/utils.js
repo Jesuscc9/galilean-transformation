@@ -14,8 +14,8 @@ export const formula = ({ v1, v2, v, problem }) => {
     // Case of problem 1
     return {
       v1,
-      v2,
-      v: v1 - v2,
+      v2: v1 - v2,
+      v,
       problem
     }
   }
